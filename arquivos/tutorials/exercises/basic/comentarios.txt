@@ -1,0 +1,42 @@
+
+add host h1 10.0.1.1/24 08:00:00:00:01:11
+conf h1
+route add default gw 10.0.1.10 dev eth0
+arp -i eth0 -s 10.0.1.10 08:00:00:00:01:66
+exit
+
+add host h2 10.0.2.2/24 08:00:00:00:02:22
+conf h2
+route add default gw 10.0.2.20 dev eth0
+arp -i eth0 -s 10.0.2.20 08:00:00:00:02:66
+exit
+
+add host h3 10.0.3.3/24 08:00:00:00:03:33
+conf h3
+route add default gw 10.0.3.30 dev eth0
+arp -i eth0 -s 10.0.3.30 08:00:00:00:03:66
+exit
+
+add host h4 10.0.4.4/24 08:00:00:00:04:44
+conf h4
+route add default gw 10.0.4.40 dev eth0
+arp -i eth0 -s 10.0.4.40 08:00:00:00:04:66
+exit
+
+add host h5 10.0.5.5/24 08:00:00:00:05:55
+conf h5
+route add default gw 10.0.5.50 dev eth0
+arp -i eth0 -s 10.0.5.50 08:00:00:00:05:66
+exit
+
+
+
+
+
+Makefile: possui o caminho do diretorio das topologias.
+basic.p4: define as regras e as ações quando o pacote combina com uma regra.
+arp -i interface -s (set) gateway <MAC do gateway>
+
+Em sX.runtime.json: cada MAC em dstAddr para um switch,
+                    indica um switch inteiro, porém para host
+		    deve informar o MAC do host. 
