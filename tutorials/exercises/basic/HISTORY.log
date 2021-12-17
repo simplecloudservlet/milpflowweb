@@ -1,0 +1,61 @@
+16/12/2021:    FIXED: buttons with PHP session with Ajax in the Web Interface.
+	       DONE: Web interface send template.json file.
+	       DONE: MILPFlow_receiver should generate topology.json and sx-runtime.json
+	              from received template.json file.
+	       DONE: Web interface send pre-configured template.json to MILPFlow_receiver with option 0 (disable init_p4).
+	             In other terminal: make run --> pingall to test hosts reachability.
+	       TODO: How to generate 'template.json' in the Web Interface?
+
+	       Things to write: new_template1.json with figure + json (scenario1)
+	                        new_template.json with figure + json (scenario basic)
+	       Procedure to run:
+	       1) Terminal1: MILPFlow_receiver -> 2) Browser: Web Interface -> 3) Terminal2: make run + pingall
+
+	       github -> branch trunk
+
+	       MILPFlow Web Interface: HMTL + PHP + CSS + JS + AJAX + JSON
+	       Apache2 install PHP module and with www-data permission to write files in server folder.
+
+15/12/2021:    template.json -> MILPFlow_reader --> topology.json
+                                             |
+					     +----> sX-runtime.json 
+
+               TODO: MILPFlow_receiver must read 'template.json' and
+	              generate 'topology.json' and 'sX-runtime.json'
+	       
+14/12/2021:	topology.txt is saved on 'arquivos/' folder.
+                TODO: first 'send batch' on web interface gives
+		 error message, but MILPFlow_receiver has already
+		 received this 'batch.txt' file.
+
+		 apachectl restart
+		 firefox -> localhost
+		 MILPFlow_receiver
+		 Send Batch -> Send the topology.txt file
+		 Send Done  -> Finishes the MILPFlow_receiver 
+
+		 MILPFlow_reader:
+		 -Start at 'template.json' <- this should be the file generated
+		  by the Web interface.
+		  -template.json -> generate two files:
+		   -DONE: topology.json
+		   -TODO: sX-runtime.json
+
+		
+16/11/2021:	Minor changes
+
+13/10/2021:	Load file. topology.json has all fields
+                to create sX-runtime.json, but it is hard to parse it.
+		We define a template to create both: topology.json and sX-runtime.json,
+		 topology.json has necessary data, but embedded fields to create sX-runtime.json.
+		 topology.json has unnecessary fields to describe switches.
+		 template.json follows a Facade design pattern.
+06/10/2021:	First personalized topology with MILPFlow
+15/09/2021:	topology.txt works.
+
+14/09/2021:	TODO: Arraylist 
+
+27/08/2021:	Functional version with progress bar, on/off
+		batch completed (click twice in Web Interface to run)
+
+23/08/2021: 	First functional version based on older batch version.
